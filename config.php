@@ -26,3 +26,4 @@ require_once 'vendor/autoload.php';
 
 //CONFIGS
 define("PAGE_NAME", "Bootrine");
+define("AUTHOR", "Kusi u hirschi");
