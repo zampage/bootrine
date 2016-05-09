@@ -25,5 +25,13 @@ spl_autoload_register("autoload_entities");
 require_once 'vendor/autoload.php';
 
 //CONFIGS
-define("PAGE_NAME", "Bootrine");
-define("AUTHOR", "Kusi u hirschi");
+//PAGE
+define("PAGE_NAME", 		"Bootrine");
+define("PAGE_AUTHOR", 		"Kusi und Hirschi GmbH");
+define("PAGE_DESCRIPTION", 	"So eine Seite zum Testen von Bootstrap und Doctrine");
+define("PAGE_TAGS", 		"Kusi, Hirschi, Doctrine, Bootstrap");
+//DATABASE
+define("DB_URL", 			"localhost");
+define("DB_USER", 			"root");
+define("DB_PASSWORD", 		"");
+define("DB_SCHEMA", 		"bootrine");

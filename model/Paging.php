@@ -6,6 +6,7 @@ class Paging
 	private static $instance;
 	private $fourofour = "404";
 	private $home = "home";
+	private $defaultPath = "view/pages/";
 
 	public static function getInstance(){
 		if(!self::$instance){
@@ -16,7 +17,7 @@ class Paging
 
 	public function findPages(){
 		
-		$dir = "view/";
+		$dir = $this->defaultPath;
 		$files = array_diff(scandir($dir), array('..', '.'));
 		for($i = 0; $i < count($files); $i++){
 			$f =& $files[$i];
@@ -32,7 +33,7 @@ class Paging
 
 		$page;
 		$path;
-		$dir = "view/";
+		$dir = $this->defaultPath;
 		$files = $this->findPages();
 		
 		//SEE IF GET EXISTS

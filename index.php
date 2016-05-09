@@ -6,6 +6,9 @@
 	<head>
 		
 		<meta charset="utf-8">
+		<meta name="author" content="<?php echo PAGE_AUTHOR ?>">
+		<meta name="description" content="<?php echo PAGE_DESCRIPTION ?>">
+		<meta name="keywords" content="<?php echo PAGE_TAGS ?>">
 		<title><?php echo PAGE_NAME; ?></title>
 
 		<!-- CSS -->
