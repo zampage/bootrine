@@ -57,5 +57,5 @@ session_start();
 
 //SET SECURE PAGES
 Paging::getInstance()->setSecurePages(array(
-	"home",
+	//TBD
 ));

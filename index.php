@@ -19,6 +19,7 @@
 		<!-- JS -->
 		<script type="text/javascript" src="<?php echo ROOT; ?>jquery/jquery-1.12.3.min.js"></script>
 		<script type="text/javascript" src="<?php echo ROOT; ?>bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?php echo ROOT; ?>bootstrap/js/plugin.validator.js"></script>
 		<script type="text/javascript" src="<?php echo ROOT; ?>view/js/core-default.js"></script>
 
 	</head>

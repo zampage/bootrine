@@ -1,6 +1,11 @@
 <div class="outer-wrapper">
 	<div class="page-header">
 		<h1>Login</h1>
+		<a href="home">
+		<span class="glyphicon glyphicon-home"></span>
+		&nbsp;
+		zurück zur Startseite
+	</a>
 	</div>
 
 	<!-- FAILED LOGIN -->
@@ -19,13 +24,13 @@
 
 	<form id="login-form" action="<?php echo ROOT; ?>validatelogin" method="POST">
 		<div class="input-group">
-			<span class="input-group-addon glyphicon glyphicon-user"></span>
+			<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 			<input type="text" class="form-control" name="username" placeholder="Benutzername">
 		</div>
 		<div class="input-group">
-			<span class="input-group-addon glyphicon glyphicon-lock"></span>
+			<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
 			<input type="password" class="form-control" name="password" placeholder="Passwort">
 		</div>
-		<input type="submit" class="btn btn-default">
+		<input type="submit" class="btn btn-default" value="Login">
 	</form>
 </div>

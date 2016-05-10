@@ -13,12 +13,12 @@ html,body{
 	max-width:1000px;
 }
 
-#login-form{
+#login-form, #register-form{
 	max-width:400px;
 }
-#login-form .input-group, #login-form input[type="submit"]{
+#login-form .input-group, #login-form input[type="submit"], #register-form .input-group, #register-form input[type="submit"]{
 	margin:10px 0;
 }
-#login-form input[type="submit"]{
+#login-form input[type="submit"], #register-form input[type="submit"]{
 	float:right;
 }
