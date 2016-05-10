@@ -14,7 +14,7 @@ class Gallery
 	protected $name;
 
 	/**
-	* @OneToOne(targetEntity="User")
+	* @ManyToOne(targetEntity="User")
 	* @JoinColumn(name="FKuid", referencedColumnName="uid")
 	*/
 	protected $user;

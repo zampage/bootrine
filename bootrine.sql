@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 10. Mai 2016 um 23:10
+-- Erstellungszeit: 10. Mai 2016 um 23:30
 -- Server-Version: 10.1.10-MariaDB
 -- PHP-Version: 7.0.2
 
@@ -37,7 +37,8 @@ CREATE TABLE `gallery` (
 --
 
 INSERT INTO `gallery` (`gid`, `name`, `FKuid`) VALUES
-(1, 'Awesome Gallery', 1);
+(1, 'Awesome Gallery', 1),
+(3, 'Another One', 1);
 
 -- --------------------------------------------------------
 
@@ -56,8 +57,9 @@ CREATE TABLE `image` (
 --
 
 INSERT INTO `image` (`iid`, `FKgid`, `path`) VALUES
-(1, 1, 'image-01.png'),
-(2, 1, 'image-02.png');
+(1, 1, 'Jellyfish.jpg'),
+(2, 1, 'Koala.jpg'),
+(3, 3, 'Desert.jpg');
 
 -- --------------------------------------------------------
 
@@ -87,7 +89,7 @@ INSERT INTO `user` (`uid`, `username`, `password`) VALUES
 --
 ALTER TABLE `gallery`
   ADD PRIMARY KEY (`gid`),
-  ADD UNIQUE KEY `UNIQ_472B783AF15E5ADC` (`FKuid`);
+  ADD KEY `IDX_472B783AF15E5ADC` (`FKuid`);
 
 --
 -- Indizes für die Tabelle `image`
@@ -110,12 +112,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT für Tabelle `image`
 --
 ALTER TABLE `image`
-  MODIFY `iid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `iid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --

@@ -40,10 +40,10 @@ define("DB_URL", 			"localhost");
 define("DB_USER", 			"root");
 define("DB_PASSWORD", 		"");
 define("DB_SCHEMA", 		"bootrine");
-//DEFAULT PATH
+//PATHS
 define("ROOT",				"/bootrine/");
-//DOCTRINE
-define('ENTITY_PATH', 		"entities");
+define("ENTITY_PATH", 		"entities");
+define("IMAGES_PATH",		ROOT . "images/");
 
 //TEST DATABASE CONNECTION
 try{
