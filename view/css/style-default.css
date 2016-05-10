@@ -22,3 +22,15 @@ html,body{
 #login-form input[type="submit"], #register-form input[type="submit"]{
 	float:right;
 }
+
+.display-gallerys > div{
+	margin-bottom:30px;
+}
+
+.dropdown-add-gallery{
+	padding:5px 7px;
+}
+
+.dropdown-add-gallery input[type="text"]{
+	min-width:200px;
+}
