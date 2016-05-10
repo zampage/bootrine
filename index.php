@@ -25,7 +25,15 @@
 	<body>
 
 		<?php
-			include( Paging::getInstance()->find($_GET) );
+
+			$page = Paging::getInstance()->selectPage($_GET);
+
+			if(in_array($page, Paging::getInstance()->getSecurePages())){
+				Reglog::redirectOnInvalidAccess();
+			}
+
+			include( Paging::getInstance()->getPagePath($page) );
+
 		?>
 
 	</body>

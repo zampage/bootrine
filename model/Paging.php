@@ -7,12 +7,21 @@ class Paging
 	private $fourofour = "404";
 	private $home = "home";
 	private $defaultPath = "view/pages/";
+	private $securePages = array();
 
 	public static function getInstance(){
 		if(!self::$instance){
 			self::$instance = new self();
 		}
 		return self::$instance;
+	}
+
+	public function getSecurePages(){
+		return $this->securePages;
+	}
+
+	public function setSecurePages($ar){
+		$this->securePages = $ar;
 	}
 
 	public function findPages(){
@@ -29,11 +38,9 @@ class Paging
 
 	}
 
-	public function find($get){
+	public function selectPage($get){
 
 		$page;
-		$path;
-		$dir = $this->defaultPath;
 		$files = $this->findPages();
 		
 		//SEE IF GET EXISTS
@@ -48,7 +55,14 @@ class Paging
 			$page = $this->fourofour;
 		}
 
+		return $page;
+
+	}
+
+
+	public function getPagePath($page){
 		//ADD DIR
+		$dir = $this->defaultPath;
 		$page = $dir . $page;
 
 		//LOAD FILE (PHP FIRST)

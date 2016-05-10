@@ -4,6 +4,11 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 'true');
 
+//DOCTRINE LOADING
+require_once 'vendor/autoload.php';
+//use Doctrine\ORM\Tools\Setup;
+//use Doctrine\ORM\EntityManager;
+
 //CLASS LOADING
 function autoload_model($class){
 	$path = 'model/' . $class . '.php';
@@ -20,11 +25,11 @@ function autoload_entities($class){
 spl_autoload_register("autoload_model");
 spl_autoload_register("autoload_view");
 spl_autoload_register("autoload_entities");
+//use Bootrine\Reglog;
+//use Bootrine\UserRepository;
+//use Bootrine\User;
 
-//DOCTRINE LOADING
-require_once 'vendor/autoload.php';
-
-//CONFIGS
+//MAIN CONFIGS
 //PAGE
 define("PAGE_NAME", 		"Bootrine");
 define("PAGE_AUTHOR", 		"Kusi und Hirschi GmbH");
@@ -37,3 +42,20 @@ define("DB_PASSWORD", 		"");
 define("DB_SCHEMA", 		"bootrine");
 //DEFAULT PATH
 define("ROOT",				"/bootrine/");
+//DOCTRINE
+define('ENTITY_PATH', 		ROOT . "entities");
+
+//TEST DATABASE CONNECTION
+try{
+	Manager::get()->getConnection()->connect();
+}catch(Exception $e){
+	die("ENTITY MANAGER CANNOT CONNECT TO DATABASE");
+}
+
+//SESSION
+session_start();
+
+//SET SECURE PAGES
+Paging::getInstance()->setSecurePages(array(
+	"home",
+));
