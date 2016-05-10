@@ -8,7 +8,7 @@
 	</a>
 	</div>
 
-	<form id="register-form" action="<?php echo ROOT; ?>validateregist" method="POST" data-toggle="validator">
+	<form id="register-form" action="<?php echo ROOT; ?>validateregistration" method="POST" data-toggle="validator">
 		
 		<div class="form-group has-feedback">
 			<div class="input-group">

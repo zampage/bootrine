@@ -8,15 +8,25 @@
 	</a>
 	</div>
 
-	<!-- FAILED LOGIN -->
+	<!-- MESSAGES -->
 
 	<?php if(isset($_GET['param']) && $_GET['param'] == "badlogin"){ ?>
 
-	<div class="alert alert-danger kill-me-later" data-timer="2000" role="alert">
-		<span class="glyphicon glyphicon-alert"></span>
-		&nbsp;
-		Falscher Benutzername oder Kennwort!
-	</div>
+		<!-- FAILED LOGIN -->
+		<div class="alert alert-danger kill-me-later" data-timer="5000" role="alert">
+			<span class="glyphicon glyphicon-alert"></span>
+			&nbsp;
+			Falscher Benutzername oder Kennwort!
+		</div>
+
+	<?php } else if(isset($_GET['param']) && $_GET['param'] == "goodregistration"){ ?>
+
+		<!-- SUCCESSFUL REGISTRATION -->
+		<div class="alert alert-success kill-me-later" data-timer="5000" role="alert">
+			<span class="glyphicon glyphicon-ok"></span>
+			&nbsp;
+			Sie haben sich erfolgreich registriert!
+		</div>
 
 	<?php } ?>
 

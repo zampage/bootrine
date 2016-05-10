@@ -9,3 +9,5 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 }else{
 	header('location:home');
 }
+
+exit();

@@ -44,8 +44,18 @@ class Reglog
 
 	}
 
-	public static function register(){
-		//TBD
+	public static function register($username, $password){
+		
+		$username = htmlspecialchars($username);
+		$password = md5($password);
+
+		$user = new User();
+		$user->setUsername($username);
+		$user->setPassword($password);
+
+		Manager::get()->persist($user);
+		Manager::get()->flush();
+
 	}
 
 }
