@@ -59,14 +59,3 @@ session_start();
 Paging::getInstance()->setSecurePages(array(
 	//TBD
 ));
-
-
-$repo = Manager::get()->getRepository('Gallery');
-$galleries = $repo->findAll();
-
-echo $galleries[0]->getName() . ': <br>';
-
-foreach($galleries[0]->getImages() AS $img){
-	echo $img->getPath();
-	echo '<br>';
-}
