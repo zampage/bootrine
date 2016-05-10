@@ -18,7 +18,7 @@ class Manager
 			    	'host'		=> DB_URL,
 				), Setup::createAnnotationMetadataConfiguration(
 					array(ENTITY_PATH),
-					false
+					true //ACHTUNG: Bei OneToOne Mapping erlauben!!!
 				)
 			);
 		}
