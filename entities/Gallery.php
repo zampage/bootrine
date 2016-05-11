@@ -22,8 +22,6 @@ class Gallery
 	*/
 	protected $user;
 
-	//, indexBy="gid"
-	//JoinColumn(name="gid", referencedColumnName="FKgid")
 	/** 
 	* @OneToMany(targetEntity="Image", mappedBy="gallery")
 	* JoinColumn(name="gid", referencedColumnName="FKgid")

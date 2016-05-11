@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 11. Mai 2016 um 16:12
--- Server-Version: 10.1.9-MariaDB
--- PHP-Version: 5.5.30
+-- Erstellungszeit: 11. Mai 2016 um 20:48
+-- Server-Version: 10.1.10-MariaDB
+-- PHP-Version: 7.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,17 +29,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `gallery` (
   `gid` int(11) NOT NULL,
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `private` int(11) NOT NULL,
-  `FKuid` int(11) DEFAULT NULL
+  `FKuid` int(11) DEFAULT NULL,
+  `private` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Daten für Tabelle `gallery`
 --
 
-INSERT INTO `gallery` (`gid`, `name`, `private`, `FKuid`) VALUES
-(1, 'Awesome Gallery', 0, 1),
-(3, 'Another One', 0, 1);
+INSERT INTO `gallery` (`gid`, `name`, `FKuid`, `private`) VALUES
+(1, 'Awesome Gallery', 1, 0),
+(3, 'Another One', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -113,7 +113,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT für Tabelle `image`
 --

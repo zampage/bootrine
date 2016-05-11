@@ -2,7 +2,7 @@
 
 use Doctrine\ORM\EntityRepository;
 
-class Gallery extends EntityRepository
+class GalleryRepository extends EntityRepository
 {
 
 	public function getGallery($gid){

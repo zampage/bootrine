@@ -7,13 +7,13 @@
 class User
 {
 
-	/** @Id @Column(type="integer") @GeneratedValue */
+	/** @Id @Column(name="uid", type="integer") @GeneratedValue */
 	protected $uid;
 
-	/** @Column(type="string", length=64) **/
+	/** @Column(name="username", type="string", length=64) **/
 	protected $username;
 
-	/** @Column(type="string", length=32) **/
+	/** @Column(name="password", type="string", length=32) **/
 	protected $password;
 
 	public function getUid(){ return $this->uid; }

@@ -20,8 +20,6 @@ class Image
 	* @ManyToOne(targetEntity="Gallery", inversedBy="images")
 	* @JoinColumn(name="FKgid", referencedColumnName="gid", onDelete="CASCADE")
 	*/
-
-
 	protected $gallery;
 
 	public function getIid(){ return $this->iid; }

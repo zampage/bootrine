@@ -6,10 +6,9 @@ ini_set('display_errors', 'true');
 
 //DOCTRINE LOADING
 require_once 'vendor/autoload.php';
-//use Doctrine\ORM\Tools\Setup;
-//use Doctrine\ORM\EntityManager;
 
 //CLASS LOADING
+//setup autoload functions
 function autoload_model($class){
 	$path = 'model/' . $class . '.php';
 	(file_exists($path)) ? include_once($path) : null ;
@@ -22,12 +21,12 @@ function autoload_entities($class){
 	$path = 'entities/' . $class . '.php';
 	(file_exists($path)) ? include_once($path) : null ;
 }
+//register autoload functions
 spl_autoload_register("autoload_model");
 spl_autoload_register("autoload_view");
 spl_autoload_register("autoload_entities");
-//use Bootrine\Reglog;
-//use Bootrine\UserRepository;
-//use Bootrine\User;
+//load controller manually
+require_once('controller.php');
 
 //MAIN CONFIGS
 //PAGE
@@ -45,17 +44,10 @@ define("ROOT",				"/bootrine/");
 define("ENTITY_PATH", 		"entities");
 define("IMAGES_PATH",		ROOT . "images/");
 
-//TEST DATABASE CONNECTION
-try{
-	Manager::get()->getConnection()->connect();
-}catch(Exception $e){
-	die("ENTITY MANAGER CANNOT CONNECT TO DATABASE");
-}
-
 //SESSION
 session_start();
 
 //SET SECURE PAGES
 Paging::getInstance()->setSecurePages(array(
-	//TBD
+	"gallery"
 ));
