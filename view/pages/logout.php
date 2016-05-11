@@ -1,5 +1,5 @@
 <?php
 
 unset($_SESSION['user']);
-header('location:home');
+header('location:'.ROOT.'home');
 exit();

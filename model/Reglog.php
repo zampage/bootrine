@@ -6,7 +6,7 @@ class Reglog
 	public static function redirectOnInvalidAccess($page = 'login'){
 		$valid = self::check();
 		if(!$valid){
-			header('location:' . $page);
+			header('location:' . ROOT . $page);
 			exit();
 		}
 	}

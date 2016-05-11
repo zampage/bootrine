@@ -6,6 +6,7 @@ if(isset($_GET["param"])) {
 } else {
 	//404 Gallery not found
 	header("Location: ".ROOT."404");
+	exit();
 }
 
 ?>
