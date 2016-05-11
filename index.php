@@ -22,6 +22,9 @@
 		<script type="text/javascript" src="<?php echo ROOT; ?>bootstrap/js/plugin.validator.js"></script>
 		<script type="text/javascript" src="<?php echo ROOT; ?>view/js/core-default.js"></script>
 
+		<!-- ADD ROOT TO JS -->
+		<script>var ROOT = "<?php echo ROOT; ?>";</script>
+
 	</head>
 	<body>
 
@@ -47,13 +50,13 @@
 						<?php if(Reglog::check()){ ?>
 
 							<!-- ONLY LOGGED IN USER -->
-							<li class="dropdown">
+							<li class="dropdown new-gallery-dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span> <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li class="dropdown-add-gallery">
+									<li class="dropdown-add-gallery new-gallery-dropdown-bullet">
 										<div class="input-group">
-											<input type="text" class="form-control" placeholder="Gallerie name" aria-describedby="galleryName">
-											<span class="input-group-addon" id="galleryName"><span class="glyphicon glyphicon-pencil"></span>
+											<input type="text" class="form-control new-gallery-name" placeholder="Gallerie Name" aria-describedby="galleryName">
+											<span class="input-group-addon add-gallery" id="galleryName"><span class="glyphicon glyphicon-pencil"></span>
 										</div>
 										
 									</li>

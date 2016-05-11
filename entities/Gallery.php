@@ -43,4 +43,22 @@ class Gallery
 	public function getImages(){ return $this->images; }
 	public function setImages($images){ $this->images = $images; }
 
+	public function displayThumb(){
+
+		$imgs = $this->getImages();
+		echo '<div class="col-md-4 col-sm-6 col-xs-12">';
+		echo '<a href="gallery/' . $this->getGid() . '" class="thumbnail">';
+		echo '<div class="image-holder">';
+		if(count($imgs) > 0){
+			echo '<img src="' . IMAGES_PATH . $imgs[0]->getPath() . '">';
+		}
+		echo '</div>';
+		echo '</a>';
+		echo '<a href="gallery/' . $this->getGid() . '">';
+		echo '<h3>' . $this->getName() . '&nbsp;<small>by ' . $this->getUser()->getUsername() . '</small></h3>';
+		echo '</a>';
+		echo '</div>';
+
+	}
+
 }

@@ -19,18 +19,22 @@
     * Registration Design
     * Registration Logic
     * Home Design
+    * Display Gallery Thumbnail Logic
+    * Add New Gallery Logic
 
 * In Progress:
-    * Home Logic
-
-* Not Yet Started:
     * Gallery Design
     * Gallery Logic
+
+* Not Yet Started:
+    * Gallery Editing
+    * Image Upload
 
 ### TODO / BUGLIST
 ------------------
 * clean dirty code in  home.php
 * forbidden pages: back to where you come from after login
+* put addGallery from ajax-api.php in GalleryRepository
 
 ### LINKS
 ------------------

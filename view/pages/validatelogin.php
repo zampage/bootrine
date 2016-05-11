@@ -2,12 +2,12 @@
 
 if(isset($_POST['username']) && isset($_POST['password'])){
 	if( Reglog::login($_POST['username'], $_POST['password']) ){
-		header('location:home');
+		header('location:'.ROOT.'home');
 	}else{
-		header('location:login/badlogin');
+		header('location:'.ROOT.'login/badlogin');
 	}
 }else{
-	header('location:home');
+	header('location:'.ROOT.'home');
 }
 
 exit();

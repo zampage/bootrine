@@ -1,11 +1,11 @@
 <div class="outer-wrapper">
 	<div class="page-header">
 		<h1>Login</h1>
-		<a href="home">
-		<span class="glyphicon glyphicon-home"></span>
-		&nbsp;
-		zurück zur Startseite
-	</a>
+		<a href="<?php echo ROOT; ?>home">
+			<span class="glyphicon glyphicon-home"></span>
+			&nbsp;
+			zurück zur Startseite
+		</a>
 	</div>
 
 	<!-- MESSAGES -->

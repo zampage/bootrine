@@ -52,3 +52,20 @@ html,body{
 .dropdown-add-gallery input[type="text"]{
 	min-width:200px;
 }
+
+.add-gallery{
+	cursor:pointer;
+}
+
+@-webkit-keyframes spin{
+	from{-webkit-transform:scale(1) rotate(0deg);}
+	to{-webkit-transform:scale(1) rotate(360deg);}
+}
+@keyframes spin{
+	from{transform:scale(1) rotate(0deg);}
+	to{transform:scale(1) rotate(360deg);}
+}
+.glyphicon-loading{
+	-webkit-animation:spin .7s infinite linear;
+	animation:spin .7s infinite linear;
+}

@@ -1,11 +1,11 @@
 <div class="outer-wrapper">
 	<div class="page-header">
 		<h1>Registrieren</h1>
-		<a href="home">
-		<span class="glyphicon glyphicon-home"></span>
-		&nbsp;
-		zurück zur Startseite
-	</a>
+		<a href="<?php echo ROOT; ?>home">
+			<span class="glyphicon glyphicon-home"></span>
+			&nbsp;
+			zurück zur Startseite
+		</a>
 	</div>
 
 	<form id="register-form" action="<?php echo ROOT; ?>validateregistration" method="POST" data-toggle="validator">
