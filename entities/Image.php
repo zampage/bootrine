@@ -18,7 +18,7 @@ class Image
 
 	/**
 	* @ManyToOne(targetEntity="Gallery", inversedBy="images")
-	* @JoinColumn(name="FKgid", referencedColumnName="gid")
+	* @JoinColumn(name="FKgid", referencedColumnName="gid", onDelete="CASCADE")
 	*/
 
 

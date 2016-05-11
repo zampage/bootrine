@@ -15,3 +15,5 @@ TODO
 
 clean dirty code in  home.php
 delete home.html
+cascade image-gallery
+add private attribute to gallery

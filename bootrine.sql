@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 10. Mai 2016 um 23:30
--- Server-Version: 10.1.10-MariaDB
--- PHP-Version: 7.0.2
+-- Erstellungszeit: 11. Mai 2016 um 16:12
+-- Server-Version: 10.1.9-MariaDB
+-- PHP-Version: 5.5.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `gallery` (
   `gid` int(11) NOT NULL,
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `private` int(11) NOT NULL,
   `FKuid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -36,9 +37,9 @@ CREATE TABLE `gallery` (
 -- Daten für Tabelle `gallery`
 --
 
-INSERT INTO `gallery` (`gid`, `name`, `FKuid`) VALUES
-(1, 'Awesome Gallery', 1),
-(3, 'Another One', 1);
+INSERT INTO `gallery` (`gid`, `name`, `private`, `FKuid`) VALUES
+(1, 'Awesome Gallery', 0, 1),
+(3, 'Another One', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -112,7 +113,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT für Tabelle `image`
 --
@@ -131,13 +132,13 @@ ALTER TABLE `user`
 -- Constraints der Tabelle `gallery`
 --
 ALTER TABLE `gallery`
-  ADD CONSTRAINT `FK_472B783AF15E5ADC` FOREIGN KEY (`FKuid`) REFERENCES `user` (`uid`);
+  ADD CONSTRAINT `FK_472B783AF15E5ADC` FOREIGN KEY (`FKuid`) REFERENCES `user` (`uid`) ON DELETE CASCADE;
 
 --
 -- Constraints der Tabelle `image`
 --
 ALTER TABLE `image`
-  ADD CONSTRAINT `FK_C53D045FEEFC2DC2` FOREIGN KEY (`FKgid`) REFERENCES `gallery` (`gid`);
+  ADD CONSTRAINT `FK_C53D045FEEFC2DC2` FOREIGN KEY (`FKgid`) REFERENCES `gallery` (`gid`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

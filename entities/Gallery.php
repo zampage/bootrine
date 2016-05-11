@@ -13,9 +13,12 @@ class Gallery
 	/** @Column(name="name", type="string", length=64) */
 	protected $name;
 
+	/** @Column(name="private", type="integer", length=1) */
+	protected $private;
+
 	/**
 	* @ManyToOne(targetEntity="User")
-	* @JoinColumn(name="FKuid", referencedColumnName="uid")
+	* @JoinColumn(name="FKuid", referencedColumnName="uid", onDelete="CASCADE")
 	*/
 	protected $user;
 
@@ -32,6 +35,9 @@ class Gallery
 
 	public function getName(){ return $this->name; }
 	public function setName($name){ $this->name = $name; }
+
+	public function getPrivate(){ return $this->private; }
+	public function setPrivate($private){ $this->private = $private; }
 
 	public function getUser(){ return $this->user; }
 	public function setUser($user){ $this->user = $user; }
