@@ -28,7 +28,8 @@ html,body{
 }
 .image-holder{
 	width:100%;
-	height:300px;
+	height:250px;
+	overflow:hidden;
 	/*center image inside*/
 	display: -webkit-flexbox;
     display: -ms-flexbox;
@@ -41,8 +42,12 @@ html,body{
     /* // */
 }
 .image-holder img{
-	max-width:100%;
-	max-height:100%;
+	max-width:150%;
+	max-height:150%;
+}
+.image-holder img:hover{
+	max-width:120%;
+	max-height:120%;
 }
 
 .dropdown-add-gallery{

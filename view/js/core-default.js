@@ -21,6 +21,8 @@ $(document).ready(function(){
 	$('.new-gallery-dropdown').on('hidden.bs.dropdown', function(event){
 		$('.new-gallery-name').val("");
 		$('.new-gallery-name').prop('disabled', false);
+		var icon = new Icon( $('.add-gallery').find('.glyphicon') );
+		icon.reset('glyphicon-pencil');
 	});
 
 	//ADD GALLERY
@@ -65,4 +67,9 @@ Icon.prototype.toggleLoad = function(glyphicon){
 	this.glyphicon = glyphicon || this.glyphicon;
 	this.element.toggleClass(this.glyphicon);
 	this.element.toggleClass('glyphicon-refresh glyphicon-loading');
+}
+Icon.prototype.reset = function(glyphicon){
+	this.element.toggleClass(this.glyphicon);
+	this.glyphicon = glyphicon;
+	this.element.toggleClass(glyphicon);
 }
