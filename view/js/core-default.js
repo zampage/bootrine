@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+	//SET FOCUS TO FIRST INPUT FIELD
+	//IF SITE HAS INPUT
+	$('input').get(0).focus();
+
 	//HANDLE "kill-me-later" ELEMENTS
 	$('.kill-me-later').each(function(){
 		var element = $(this);
@@ -25,10 +29,10 @@ $(document).ready(function(){
 		var icon = new Icon( $(this).find('.glyphicon') );
 		if(gname.length > 0){
 			icon.toggleLoad();
+			$('.new-gallery-name').prop('disabled', true);
 			$.post(ROOT + 'ajax-api.php', {action: 'addGallery', gname: gname}, function(data){
 				$('.display-gallerys').append(data);
 				icon.toggleLoad('glyphicon-ok');
-				$('.new-gallery-name').prop('disabled', true);
 			});
 		}
 	});
