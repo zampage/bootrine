@@ -42,12 +42,12 @@ html,body{
     /* // */
 }
 .image-holder img{
-	max-width:150%;
-	max-height:150%;
+	max-height:100%;
+	opacity: .7;
+	transition:opacity .5s easy;
 }
 .image-holder img:hover{
-	max-width:120%;
-	max-height:120%;
+	opacity: 1;
 }
 
 .dropdown-add-gallery{

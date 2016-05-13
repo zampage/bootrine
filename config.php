@@ -37,10 +37,10 @@ define("PAGE_TAGS", 		"Kusi, Hirschi, Doctrine, Bootstrap");
 //DATABASE
 define("DB_URL", 			"localhost");
 define("DB_USER", 			"root");
-define("DB_PASSWORD", 		"");
+define("DB_PASSWORD", 		"bictplc");
 define("DB_SCHEMA", 		"bootrine");
 //PATHS
-define("ROOT",				"/bootrine/");
+define("ROOT",				"/github/bootrine/");
 define("ENTITY_PATH", 		"entities");
 define("IMAGES_PATH",		ROOT . "images/");
 

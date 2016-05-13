@@ -45,4 +45,15 @@ class Controller
 
 	}
 
+	public static function displayGallery($id) {
+		$grepo = Manager::get()->getRepository('Gallery');
+		$galleries = $grepo->findBy(array('gid' => $id));
+
+		if($galleries){
+			foreach($galleries AS $g){
+				$g->display();
+			}
+		}
+	}
+
 }

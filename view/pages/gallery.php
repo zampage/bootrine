@@ -1,7 +1,9 @@
 <?php
 
 if(isset($_GET["param"])) {
-	//Check if gallery exists
+	
+	//Get correct Gallery
+	Controller::displayGallery($_GET["param"]);
 	
 } else {
 	//404 Gallery not found

@@ -61,4 +61,23 @@ class Gallery
 
 	}
 
+	public function display() {
+		$imgs = $this->getImages();
+		$title = $imgs[0]->getGallery()->getName();
+
+		echo "<h1>$title</h1>";
+
+		foreach ($imgs as $i) {
+			//print single images
+			echo '<div class="col-md-4 col-sm-6 col-xs-12">';
+			echo '<a href="#" class="thumbnail">';
+			echo '<div class="image-holder">';
+			echo '<img src="' . IMAGES_PATH . $i->getPath() . '">';
+			echo '</div>';
+			echo '</a>';
+			echo '</div>';
+		}
+
+	}
+
 }
