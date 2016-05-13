@@ -1,7 +1,7 @@
 <?php
 
 /**
-* @Entity
+* @Entity(repositoryClass="GalleryRepository")
 * @Table(name="gallery")
 */
 class Gallery

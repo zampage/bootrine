@@ -5,19 +5,11 @@ use Doctrine\ORM\EntityRepository;
 class GalleryRepository extends EntityRepository
 {
 
-	public function getGallery($gid){
+	public function findGallery() {
+		
 
-		return Manager::get()
-				->createQuery('SELECT gid, name, iid, path FROM image JOIN gallery on gid = FKgid WHERE FKgid = :gid')
-				->setParameter(':gid', $gid)
-				->getResult();
-
-	}
-
-	public function setGallery($name, $links = array()){
-
-		//Save a new gallery
-
+		$query = Manager::get()->createQuery('SELECT g FROM gallery g');
+		return $query->getResult();
 	}
 
 }
