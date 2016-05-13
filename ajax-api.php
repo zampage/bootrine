@@ -28,7 +28,7 @@ if(isset($_POST['action'])){
 			Manager::get()->persist($img);
 			Manager::get()->flush($img);
 
-			echo 
+			echo $img->display();
 
 		}
 

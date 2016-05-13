@@ -105,3 +105,7 @@ html,body{
 .img-upload-group{
 	width:100%;
 }
+
+.outer-wrapper-gallery{
+	padding:0 5%;
+}

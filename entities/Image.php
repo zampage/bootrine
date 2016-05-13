@@ -28,4 +28,15 @@ class Image
 	public function getGallery(){ return $this->gallery; }
 	public function setGallery($gallery){ $this->gallery = $gallery; }
 
+	public function display(){
+		//print single images
+		echo '<div class="col-md-4 col-sm-6 col-xs-12">';
+		echo '<a href="#" class="thumbnail">';
+		echo '<div class="image-holder">';
+		echo '<img src="' . IMAGES_PATH . $this->getPath() . '">';
+		echo '</div>';
+		echo '</a>';
+		echo '</div>';
+	}
+
 }

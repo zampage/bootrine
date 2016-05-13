@@ -89,7 +89,7 @@ $(document).ready(function(){
 				$('.img-upload-file').val("");
 				$('.img-upload-file-text').val("");
 				$('.img-upload-button').prop('disabled', 'true');
-				window.location.reload();
+				$('.gallery-content').prepend(data);
 			}
 		});
     });

@@ -1,3 +1,4 @@
+<div class="outer-wrapper-gallery">
 <?php
 
 if(isset($_GET["param"])) {
@@ -12,3 +13,4 @@ if(isset($_GET["param"])) {
 }
 
 ?>
+</div>

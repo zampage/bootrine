@@ -65,18 +65,12 @@ class Gallery
 		$imgs = $this->getImages();
 		$title = $imgs[0]->getGallery()->getName();
 
-		echo "<h1>$title</h1>";
-
+		echo '<div class="page-header"><h1>'.$title.'</h1></div>';
+		echo '<div class="row gallery-content">';
 		foreach ($imgs as $i) {
-			//print single images
-			echo '<div class="col-md-4 col-sm-6 col-xs-12">';
-			echo '<a href="#" class="thumbnail">';
-			echo '<div class="image-holder">';
-			echo '<img src="' . IMAGES_PATH . $i->getPath() . '">';
-			echo '</div>';
-			echo '</a>';
-			echo '</div>';
+			$i->display();
 		}
+		echo '</div>';
 
 	}
 
