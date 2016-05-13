@@ -16,13 +16,15 @@ class Controller
 	}
 
 	public static function displayAllGallerys(){
+		//Save uid for display correct gallerys. IF the user is not loged in, give him ID 0
+		$uid = (isset($_SESSION["user"]["uid"])) ? $_SESSION["user"]["uid"] : 0;
 
 		$grepo = Manager::get()->getRepository('Gallery');
 		$galleries = $grepo->findAll();
 
 		if($galleries){
 			foreach($galleries AS $g){
-				$g->displayThumb();
+				($g->getPrivate() == 1 && $g->getUser()->getUid() != $uid)?:$g->displayThumb();
 			}
 		}
 
