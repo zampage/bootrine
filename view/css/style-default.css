@@ -8,6 +8,26 @@ html,body{
 	height:auto;
 }
 
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
 .outer-wrapper{
 	margin:auto;
 	max-width:1000px;
@@ -73,4 +93,15 @@ html,body{
 .glyphicon-loading{
 	-webkit-animation:spin .7s infinite linear;
 	animation:spin .7s infinite linear;
+}
+
+.img-upload-button{
+	width:100%;
+	margin-top:10px;
+}
+.img-upload-button .glyphicon{
+	font-size:1.5em;
+}
+.img-upload-group{
+	width:100%;
 }

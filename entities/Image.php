@@ -10,9 +10,6 @@ class Image
 	/** @Id @Column(name="iid", type="integer") @GeneratedValue(strategy="AUTO") */
 	protected $iid;
 
-	/** @Column(name="FKgid", type="integer") */
-	protected $FKgid;
-
 	/** @Column(name="path", type="string", length=128) */
 	protected $path;
 

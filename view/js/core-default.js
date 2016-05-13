@@ -19,10 +19,18 @@ $(document).ready(function(){
 	});
 
 	$('.new-gallery-dropdown').on('hidden.bs.dropdown', function(event){
-		$('.new-gallery-name').val("");
-		$('.new-gallery-name').prop('disabled', false);
-		var icon = new Icon( $('.add-gallery').find('.glyphicon') );
-		icon.reset('glyphicon-pencil');
+		try{
+			$('.new-gallery-name').val("");
+			$('.new-gallery-name').prop('disabled', false);
+			var icon = new Icon( $('.add-gallery').find('.glyphicon') );
+			icon.reset('glyphicon-pencil');
+		}catch(e){}
+
+		try{
+			$('.img-upload-button').prop('disabled', 'true');
+			var icon = new Icon( $('.img-upload-button').find('.glyphicon') );
+			icon.reset('glyphicon-upload');
+		}catch(e){}
 	});
 
 	//ADD GALLERY
@@ -38,6 +46,53 @@ $(document).ready(function(){
 			});
 		}
 	});
+
+	//HANDE FILE INPUT BUTTONS
+	$(document).on('change', '.btn-file :file', function() {
+	    var input = $(this),
+	        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+	        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+	    input.trigger('fileselect', [numFiles, label]);
+	});
+	$('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        
+        var input = $(this).parents('.input-group').find(':text'),
+            log = numFiles > 1 ? numFiles + ' files selected' : label;
+        
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) alert(log);
+        }
+        
+    });
+
+    //UPLOAD IMAGE
+    $('.img-upload-button').on('click', function(event){
+    	var files = $('.img-upload-file').get(0).files;
+    	var fd = new FormData();
+    	var icon = new Icon($(this).find('.glyphicon'));
+    	icon.toggleLoad();
+    	fd.append('images[]', files[0], files[0].name);
+    	fd.append('action', 'uploadImage');
+    	fd.append('gid', document.location.pathname.split('/')[document.location.pathname.split('/').length - 1]);
+    	$.ajax({
+			url: ROOT + 'ajax-api.php',
+			type: "POST",
+			data: fd,
+			contentType: false,
+			cache: false,
+			processData:false,
+			success: function(data){
+				console.log(data);
+				icon.toggleLoad('glyphicon-ok');
+				$('.img-upload-file').val("");
+				$('.img-upload-file-text').val("");
+				$('.img-upload-button').prop('disabled', 'true');
+				window.location.reload();
+			}
+		});
+    });
 
 });
 

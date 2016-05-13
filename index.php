@@ -54,16 +54,34 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span> <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li class="dropdown-add-gallery new-gallery-dropdown-bullet">
+
+									<?php if( Paging::getInstance()->selectPage($_GET) == 'gallery' ){ ?>
+										<!-- ON GALLERY -->
+										<div class="input-group img-upload-group">
+											<span class="input-group-addon btn btn-default btn-file">
+												Bild wählen<input type="file" multiple accept="image/*" class="img-upload-file">
+											</span>
+											<input type="text" class="form-control img-upload-file-text" disabled>
+										</div>
+										<div class="input-group img-upload-group">
+											<button type="button" class="btn btn-primary img-upload-button">
+												<span class="glyphicon glyphicon-upload"></span>
+											</button>
+										</div>
+										<!-- // -->										
+									<?php }else{ ?>
+										<!-- ON HOME -->
 										<div class="input-group">
 											<input type="text" class="form-control new-gallery-name" placeholder="Gallerie Name" aria-describedby="galleryName">
 											<span class="input-group-addon add-gallery" id="galleryName"><span class="glyphicon glyphicon-pencil"></span>
 										</div>
-										
+										<!-- // -->
+									<?php } ?>
+
 									</li>
 
 								</ul>
 							</li>
-							<li><a href="#">Bearbeiten</a></li>
 							<li><a href="<?php echo ROOT; ?>logout">Ausloggen</a></li>
 
 						<?php }else{ ?>
