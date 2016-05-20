@@ -2,7 +2,10 @@ $(document).ready(function(){
 
 	//SET FOCUS TO FIRST INPUT FIELD
 	//IF SITE HAS INPUT
-	$('input').get(0).focus();
+	if($("input")[0]) { 
+		$('input').get(0).focus();
+	}
+	
 
 	//CHECKBOX TO SWITCH
 	$.fn.bootstrapSwitch.defaults.onText = "Private";
