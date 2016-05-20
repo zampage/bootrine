@@ -14,6 +14,7 @@
 		<!-- CSS -->
 		<link rel="stylesheet" type="text/css" href="<?php echo ROOT; ?>bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo ROOT; ?>bootstrap/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo ROOT; ?>bootstrap/css/plugin.switch.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo ROOT; ?>view/css/style-default.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo ROOT; ?>view/css/style-gallery.css">
 
@@ -21,6 +22,7 @@
 		<script type="text/javascript" src="<?php echo ROOT; ?>jquery/jquery-1.12.3.min.js"></script>
 		<script type="text/javascript" src="<?php echo ROOT; ?>bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<?php echo ROOT; ?>bootstrap/js/plugin.validator.js"></script>
+		<script type="text/javascript" src="<?php echo ROOT; ?>bootstrap/js/plugin.switch.js"></script>
 		<script type="text/javascript" src="<?php echo ROOT; ?>view/js/core-default.js"></script> 
 		<script type="text/javascript" src="<?php echo ROOT; ?>view/js/gallery-core.js"></script> 
 
@@ -52,6 +54,7 @@
 						<?php if(Reglog::check()){ ?>
 
 							<!-- ONLY LOGGED IN USER -->
+							<?php if( Paging::getInstance()->selectPage($_GET) == 'gallery' || Paging::getInstance()->selectPage($_GET) == 'home' ){ ?>
 							<li class="dropdown new-gallery-dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span> <b class="caret"></b></a>
 								<ul class="dropdown-menu">
@@ -71,7 +74,7 @@
 											</button>
 										</div>
 										<!-- // -->										
-									<?php }else{ ?>
+									<?php }else if( Paging::getInstance()->selectPage($_GET) == 'home' ){ ?>
 										<!-- ON HOME -->
 										<div class="input-group">
 											<input type="text" class="form-control new-gallery-name" placeholder="Gallerie Name" aria-describedby="galleryName">
@@ -84,6 +87,7 @@
 
 								</ul>
 							</li>
+							<?php } ?>
 							<li><a href="<?php echo ROOT; ?>logout">Ausloggen</a></li>
 
 						<?php }else{ ?>

@@ -34,4 +34,19 @@ if(isset($_POST['action'])){
 		}
 
 	}
+
+	if($_POST['action'] == 'saveGalleryEdit'){
+
+		$name = htmlspecialchars($_POST['name']);
+		$priv = ($_POST['priv'] == 1) ? 1 : 0;
+		$gid = intval($_POST['gid']);
+
+		$gallery = Manager::get()->getRepository('Gallery')->find($gid);
+		$gallery->setName($name);
+		$gallery->setPrivate($priv);
+
+		Manager::get()->persist($gallery);
+		Manager::get()->flush($gallery);
+
+	}
 }

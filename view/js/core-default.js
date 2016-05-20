@@ -4,6 +4,11 @@ $(document).ready(function(){
 	//IF SITE HAS INPUT
 	$('input').get(0).focus();
 
+	//CHECKBOX TO SWITCH
+	$.fn.bootstrapSwitch.defaults.onText = "Private";
+	$.fn.bootstrapSwitch.defaults.offText = "Public";
+	$('input[type="checkbox"]').bootstrapSwitch();
+
 	//HANDLE "kill-me-later" ELEMENTS
 	$('.kill-me-later').each(function(){
 		var element = $(this);
@@ -94,6 +99,24 @@ $(document).ready(function(){
 				$('.gallery-content').prepend(data);
 			}
 		});
+    });
+
+    //GALLERY EDITING
+    $('.toggle-gallery-editing').on('click', function(event){
+    	$('.gallery-editing-zone').slideToggle('fast');
+    });
+    //SAVE GALLERY EDIT
+    $('.save-gallery-edit').on('click', function(event){
+    	var name = $('.gallery-name').val();
+    	var priv = ($('.gallery-private').prop('checked')) ? 1 : 0;
+    	var gid = parseInt($('.gallery-gid').val());
+    	$.post(ROOT+'ajax-api.php', {action:'saveGalleryEdit', name:name, priv:priv, gid:gid},function(data){
+    		console.log(data);
+    		$('.gallery-title').text(name);
+    		var lbl = (priv == 1) ? '&nbsp;<sup><span class="label label-primary">private</span></sup>' : '' ;
+    		$('.gallery-label-placeholder').html(lbl);
+    		$('.gallery-editing-zone').slideToggle('fast');
+    	});
     });
 
 });

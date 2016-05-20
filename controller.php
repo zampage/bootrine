@@ -76,11 +76,36 @@ class Controller
 
 	}
 
-	public static function displayGallery($id) {
+	public static function displayGalleryInfo($id) {
 		$gallery = Manager::get()->getRepository('Gallery')->find($id);
 		if($gallery){
-			$gallery->display();
+			$gallery->displayInfo();
 		}
+	}
+
+	public static function displayGalleryImages($id) {
+		$gallery = Manager::get()->getRepository('Gallery')->find($id);
+		if($gallery){
+			$gallery->displayImages();
+		}
+	}
+
+	public static function getCurrentGallery($gid){
+		$gallery = Manager::get()->getRepository('Gallery')->find($gid);
+		if($gallery){
+			return $gallery;
+		}
+	}
+
+	public static function isOwnGallery($gid){
+		if(Reglog::check()){
+			$user = Manager::get()->getRepository('User')->find($_SESSION['user']['uid']);
+			$gallery = self::getCurrentGallery($gid);
+			if($gallery->getUser() == $user){
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

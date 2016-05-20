@@ -68,14 +68,17 @@ class Gallery
 
 	}
 
-	public function display() {
-		$imgs = $this->getImages();
+	public function displayInfo(){
 		$title = $this->getName();
-
 		echo '<div class="page-header">';
-		echo '<h1>'.$title;
-		echo ($this->isPrivate()) ? ' <sup><small><span class="label label-default">private</span></small></sup>' : '';
+		echo '<h1><span class="gallery-title">'.$title . '</span><span class="gallery-label-placeholder">';
+		echo ($this->isPrivate()) ? '&nbsp;<sup><span class="label label-primary">private</span></sup>' : '';
+		echo (Controller::isOwnGallery($this->gid)) ? '</span>&nbsp;<sup><span class="label label-primary toggle-gallery-editing"><span class="glyphicon glyphicon-pencil"></span></span></sup>' : '';
 		echo '</h1></div>';
+	}
+
+	public function displayImages(){
+		$imgs = $this->getImages();
 		echo '<div class="row gallery-content">';
 		if(count($this->getImages()) > 0){
 			foreach ($imgs as $i) {
@@ -83,7 +86,6 @@ class Gallery
 			}
 		}
 		echo '</div>';
-
 	}
 
 }

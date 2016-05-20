@@ -109,3 +109,14 @@ html,body{
 .outer-wrapper-gallery{
 	padding:0 5%;
 }
+
+.gallery-editing-zone{
+	display:none;
+}
+.toggle-gallery-editing{
+	cursor:pointer;
+}
+.gallery-editing-form .input-group{
+	float:left;
+	max-width:300px;$
+}
