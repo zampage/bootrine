@@ -12,7 +12,7 @@ lightbox.prototype.init = function() {
 	
 	that = this;
 
-	this.thumbs.on("click", function() {
+	$(document).on("click", '.gallerythumb', function() {
 		that.showImage(this);
 	});
 
@@ -28,7 +28,8 @@ lightbox.prototype.init = function() {
 };
 
 lightbox.prototype.showImage = function(elem) {
-	path = $(elem).data("path"); 
+	path = $(elem).data("path");
+	console.log(path);
 	gwrap = $(".galleryHolder");
 
 	gwrap.append($('<img>', {src: path, class: "galleryImgBig"}));

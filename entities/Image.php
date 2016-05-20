@@ -30,12 +30,12 @@ class Image
 
 	public function display(){
 		//print single images
-		echo '<div class="col-md-4 col-sm-6 col-xs-12">';
-		echo '<a href="#" class="thumbnail">';
-		echo '<div class="image-holder">';
+		echo '<div class="col-md-3 col-sm-4 col-xs-12">';
+		echo '<div class="thumbnail">';
+		echo '<div class="image-holder gallerythumb" data-path="' . IMAGES_PATH . $this->getPath() . '">';
 		echo '<img src="' . IMAGES_PATH . $this->getPath() . '">';
 		echo '</div>';
-		echo '</a>';
+		echo '</div>';
 		echo '</div>';
 	}
 

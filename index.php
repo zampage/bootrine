@@ -15,12 +15,14 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo ROOT; ?>bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo ROOT; ?>bootstrap/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo ROOT; ?>view/css/style-default.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo ROOT; ?>view/css/style-gallery.css">
 
 		<!-- JS -->
 		<script type="text/javascript" src="<?php echo ROOT; ?>jquery/jquery-1.12.3.min.js"></script>
 		<script type="text/javascript" src="<?php echo ROOT; ?>bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<?php echo ROOT; ?>bootstrap/js/plugin.validator.js"></script>
 		<script type="text/javascript" src="<?php echo ROOT; ?>view/js/core-default.js"></script> 
+		<script type="text/javascript" src="<?php echo ROOT; ?>view/js/gallery-core.js"></script> 
 
 		<!-- ADD ROOT TO JS -->
 		<script>var ROOT = "<?php echo ROOT; ?>";</script>
