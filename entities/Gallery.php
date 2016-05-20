@@ -60,7 +60,9 @@ class Gallery
 		echo '</div>';
 		echo '</a>';
 		echo '<a href="gallery/' . $this->getGid() . '">';
-		echo '<h3>' . $this->getName() . '&nbsp;<small>by ' . $this->getUser()->getUsername() . '</small></h3>';
+		echo '<h3>' . $this->getName();
+		echo ($this->isPrivate()) ? '&nbsp;<sup><small><span class="label label-primary">private</span></small></sup>' : '' ;
+		echo '<br><small>by ' . $this->getUser()->getUsername() . '</small></h3>';
 		echo '</a>';
 		echo '</div>';
 
