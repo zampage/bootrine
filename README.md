@@ -1,14 +1,6 @@
 # bootrine
 **bootrine** is a testproject to learn the bootstrap library and doctrine framework.
 
-### INFO
-------------------
-* cli-config.php nur ausführen wenn keine fehler in config.php sind!!!
-* Datenbank
-    * erstellen: vendor\bin\doctrine orm:schema-tool:create
-    * updaten: vendor\bin\doctrine orm:schema-tool:update --force
-    * validieren: vendor\bin\doctrine orm:validate-schema
-
 ### FEATURES
 ------------------
 * Finished:
@@ -25,23 +17,24 @@
     * Gallery Logic
     * Image Upload Logic
     * Multiple Image Upload Logic
+    * Gallery Design (optimized)
 
 * In Progress:
-    * Gallery Design (advanced)
+    * Delete Images
 
-* Not Yet Started:
-    * Gallery Editing
-
-### TODO / BUGLIST
-------------------
-* clean dirty code in  home.php
-* forbidden pages: back to where you come from after login
-* put addGallery from ajax-api.php in GalleryRepository
 
 ### LINKS
 ------------------
 * http://doctrine-orm.readthedocs.io/projects/doctrine-orm/en/latest/reference/annotations-reference.html
 * Online Markdown Editor: http://dillinger.io/
+
+### CLI
+------------------
+* run cli-config.php only if there are no bugs or errors in config.php!
+* Datenbank
+    * create: vendor\bin\doctrine orm:schema-tool:create
+    * update: vendor\bin\doctrine orm:schema-tool:update --force
+    * validate: vendor\bin\doctrine orm:validate-schema
 
 ### CODE INFORMATION
 ------------------
