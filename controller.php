@@ -48,11 +48,9 @@ class Controller
 	}
 
 	public static function displayGallery($id) {
-		$galleries = Manager::get()->getRepository('Gallery')->findAll();
-		if($galleries){
-			foreach($galleries AS $g){
-				$g->display();
-			}
+		$gallery = Manager::get()->getRepository('Gallery')->find($id);
+		if($gallery){
+			$gallery->display();
 		}
 	}
 

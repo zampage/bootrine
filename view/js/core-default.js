@@ -73,7 +73,9 @@ $(document).ready(function(){
     	var fd = new FormData();
     	var icon = new Icon($(this).find('.glyphicon'));
     	icon.toggleLoad();
-    	fd.append('images[]', files[0], files[0].name);
+    	for(var i = 0; i < files.length; i++){
+	    	fd.append('images[]', files[i], files[i].name);
+	    }
     	fd.append('action', 'uploadImage');
     	fd.append('gid', document.location.pathname.split('/')[document.location.pathname.split('/').length - 1]);
     	$.ajax({

@@ -21,14 +21,16 @@
     * Home Design
     * Display Gallery Thumbnail Logic
     * Add New Gallery Logic
+    * Gallery Design (simple)
+    * Gallery Logic
+    * Image Upload Logic
+    * Multiple Image Upload Logic
 
 * In Progress:
-    * Gallery Design
-    * Gallery Logic
+    * Gallery Design (advanced)
 
 * Not Yet Started:
     * Gallery Editing
-    * Image Upload
 
 ### TODO / BUGLIST
 ------------------

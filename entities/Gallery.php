@@ -63,12 +63,14 @@ class Gallery
 
 	public function display() {
 		$imgs = $this->getImages();
-		$title = $imgs[0]->getGallery()->getName();
+		$title = $this->getName();
 
 		echo '<div class="page-header"><h1>'.$title.'</h1></div>';
 		echo '<div class="row gallery-content">';
-		foreach ($imgs as $i) {
-			$i->display();
+		if(count($this->getImages()) > 0){
+			foreach ($imgs as $i) {
+				$i->display();
+			}
 		}
 		echo '</div>';
 
