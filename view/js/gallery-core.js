@@ -22,6 +22,7 @@ lightbox.prototype.init = function() {
 		console.log(this);
 		setTimeout(function(){
 			gwrap.html("");
+			gwrap.css("display", "none");
 		}, 500);
 		
 	})
@@ -33,6 +34,7 @@ lightbox.prototype.showImage = function(elem) {
 	gwrap = $(".galleryHolder");
 
 	gwrap.append($('<img>', {src: path, class: "galleryImgBig"}));
+	gwrap.css("display", "block");
 	gwrap.css("opacity", "1");
 
 	
