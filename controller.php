@@ -15,16 +15,45 @@ class Controller
 
 	}
 
+	public static function handleGalleryContent(){
+		if(isset($_GET["param"])) {
+			if( Paging::getInstance()->checkGalleryAccess($_GET['param']) ){
+				Controller::displayGallery($_GET["param"]);
+			}else{
+				if(Reglog::check()){
+					//user not allowed in this gallery
+					header('location:'.ROOT.'404');
+				}else{
+					//login to see gallery
+					header('location:'.ROOT.'login');
+				}
+			}
+		} else {
+			//404 Gallery not found
+			header("Location: ".ROOT."404");
+			exit();
+		}
+	}
+
 	public static function displayAllGallerys(){
-		//Save uid for display correct gallerys. IF the user is not loged in, give him ID 0
-		$uid = (isset($_SESSION["user"]["uid"])) ? $_SESSION["user"]["uid"] : 0;
 
 		$grepo = Manager::get()->getRepository('Gallery');
-		$galleries = $grepo->findAll();
+
+		//FIND ALL PUBLIC GALLERYS AND ONLY MY OWN PRIVATE
+		//(if logged in)
+		if(Reglog::check()){
+			$galleries = $grepo->findAllPublicAndOwnPrivate(
+				Manager::get()->getRepository('User')->find(
+					$_SESSION["user"]["uid"]
+				)
+			);
+		}else{
+			$galleries = $grepo->findAllPublic();
+		}
 
 		if($galleries){
 			foreach($galleries AS $g){
-				($g->getPrivate() == 1 && $g->getUser()->getUid() != $uid)?:$g->displayThumb();
+				$g->displayThumb();
 			}
 		}
 

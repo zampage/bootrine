@@ -25,6 +25,7 @@ class Gallery
 	/** 
 	* @OneToMany(targetEntity="Image", mappedBy="gallery")
 	* JoinColumn(name="gid", referencedColumnName="FKgid")
+	* @OrderBy({"iid" = "DESC"})
 	*/
 	protected $images;
 
@@ -42,6 +43,10 @@ class Gallery
 
 	public function getImages(){ return $this->images; }
 	public function setImages($images){ $this->images = $images; }
+
+	public function isPrivate(){
+		return ($this->getPrivate() == 1) ? true : false;
+	}
 
 	public function displayThumb(){
 
@@ -65,7 +70,10 @@ class Gallery
 		$imgs = $this->getImages();
 		$title = $this->getName();
 
-		echo '<div class="page-header"><h1>'.$title.'</h1></div>';
+		echo '<div class="page-header">';
+		echo '<h1>'.$title;
+		echo ($this->isPrivate()) ? ' <sup><small><span class="label label-default">private</span></small></sup>' : '';
+		echo '</h1></div>';
 		echo '<div class="row gallery-content">';
 		if(count($this->getImages()) > 0){
 			foreach ($imgs as $i) {

@@ -16,4 +16,22 @@ class GalleryRepository extends EntityRepository
 		return $qb->getQuery()->getResult();
 	}
 
+	public function findAllPublic(){
+		$qb = Manager::get()->createQueryBuilder();
+		$qb->select('g')
+			->from('Gallery', 'g')
+			->where('g.private=0');
+		return $qb->getQuery()->getResult();
+	}
+
+	public function findAllPublicAndOwnPrivate($user){
+		$qb = Manager::get()->createQueryBuilder();
+		$qb->select('g')
+			->from('Gallery', 'g')
+			->where('g.private=0')
+			->orwhere('g.user=:u')
+			->setParameter('u', $user);
+		return $qb->getQuery()->getResult();
+	}
+
 }

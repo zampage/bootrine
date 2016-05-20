@@ -59,7 +59,6 @@ class Paging
 
 	}
 
-
 	public function getPagePath($page){
 		//ADD DIR
 		$dir = $this->defaultPath;
@@ -74,6 +73,21 @@ class Paging
 			die("INVALID PAGING");
 		}
 
+	}
+
+	public function checkGalleryAccess($gid){
+		$gallery = Manager::get()->getRepository('Gallery')->find($gid);
+		if($gallery->isPrivate()){
+			if(Reglog::check()){
+				$user = Manager::get()->getRepository('User')->find($_SESSION['user']['uid']);
+				if($gallery->getUser() == $user){
+					return true;
+				}
+			}
+		}else{
+			return true;
+		}
+		return false;
 	}
 
 }

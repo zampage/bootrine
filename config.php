@@ -48,6 +48,4 @@ define("IMAGES_PATH",		ROOT . "images/");
 session_start();
 
 //SET SECURE PAGES
-Paging::getInstance()->setSecurePages(array(
-	"gallery"
-));
+Paging::getInstance()->setSecurePages(array());
