@@ -1,0 +1,21 @@
+
+.galleryHolder {
+	position:absolute;
+	top:0;
+	left: 0;
+	width: 100vw;
+	z-index:9999 !important;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+	background: rgba(0,0,0,0.7);
+}
+.galleryHolder > img {
+	position:relative;
+	margin:5vh auto;
+	max-height: 90vh;
+	max-width: 90vw;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+}
