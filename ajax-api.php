@@ -68,6 +68,15 @@ if(isset($_POST['action'])){
 		$user = Manager::get()->getRepository('User')->find($_SESSION['user']['uid']);
 
 		if($gallery->getUser() == $user){
+
+			//PHYSICALLY REMOVE ALL IMAGES!!!
+			//TBD: does not work yet... path problem a la hirschi
+			foreach($gallery->getImages() AS $image){
+				unlink(IMAGES_PATH.$image->getPath());
+				//echo IMAGES_PATH.$image->getPath();
+				//echo '<br>';
+			}
+
 			Manager::get()->remove($gallery);
 			Manager::get()->flush();
 		}

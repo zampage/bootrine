@@ -77,17 +77,20 @@ class Paging
 
 	public function checkGalleryAccess($gid){
 		$gallery = Manager::get()->getRepository('Gallery')->find($gid);
-		if($gallery->isPrivate()){
-			if(Reglog::check()){
-				$user = Manager::get()->getRepository('User')->find($_SESSION['user']['uid']);
-				if($gallery->getUser() == $user){
-					return true;
+		if($gallery){
+			if($gallery->isPrivate()){
+				if(Reglog::check()){
+					$user = Manager::get()->getRepository('User')->find($_SESSION['user']['uid']);
+					if($gallery->getUser() == $user){
+						return true;
+					}
 				}
+			}else{
+				return true;
 			}
-		}else{
-			return true;
+			return false;
 		}
-		return false;
+		header('location:'.ROOT.'404');
 	}
 
 }
