@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.4.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 11. Mai 2016 um 20:48
--- Server-Version: 10.1.10-MariaDB
--- PHP-Version: 7.0.2
+-- Erstellungszeit: 24. Mai 2016 um 08:33
+-- Server-Version: 5.6.25
+-- PHP-Version: 5.5.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,20 +26,12 @@ SET time_zone = "+00:00";
 -- Tabellenstruktur für Tabelle `gallery`
 --
 
-CREATE TABLE `gallery` (
+CREATE TABLE IF NOT EXISTS `gallery` (
   `gid` int(11) NOT NULL,
   `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `FKuid` int(11) DEFAULT NULL,
-  `private` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Daten für Tabelle `gallery`
---
-
-INSERT INTO `gallery` (`gid`, `name`, `FKuid`, `private`) VALUES
-(1, 'Awesome Gallery', 1, 0),
-(3, 'Another One', 1, 0);
+  `private` int(11) NOT NULL,
+  `FKuid` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -47,20 +39,11 @@ INSERT INTO `gallery` (`gid`, `name`, `FKuid`, `private`) VALUES
 -- Tabellenstruktur für Tabelle `image`
 --
 
-CREATE TABLE `image` (
+CREATE TABLE IF NOT EXISTS `image` (
   `iid` int(11) NOT NULL,
-  `FKgid` int(11) NOT NULL,
-  `path` varchar(128) COLLATE utf8_unicode_ci NOT NULL
+  `path` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `FKgid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Daten für Tabelle `image`
---
-
-INSERT INTO `image` (`iid`, `FKgid`, `path`) VALUES
-(1, 1, 'Jellyfish.jpg'),
-(2, 1, 'Koala.jpg'),
-(3, 3, 'Desert.jpg');
 
 -- --------------------------------------------------------
 
@@ -68,18 +51,11 @@ INSERT INTO `image` (`iid`, `FKgid`, `path`) VALUES
 -- Tabellenstruktur für Tabelle `user`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `uid` int(11) NOT NULL,
   `username` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(32) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Daten für Tabelle `user`
---
-
-INSERT INTO `user` (`uid`, `username`, `password`) VALUES
-(1, 'markus', 'a74a411d6532b625f61b066bf1dfdf07');
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Indizes der exportierten Tabellen
@@ -113,17 +89,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT für Tabelle `image`
 --
 ALTER TABLE `image`
-  MODIFY `iid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `iid` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Constraints der exportierten Tabellen
 --

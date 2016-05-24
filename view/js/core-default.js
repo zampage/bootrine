@@ -1,11 +1,4 @@
-$(document).ready(function(){
-
-	//SET FOCUS TO FIRST INPUT FIELD
-	//IF SITE HAS INPUT
-	if($("input")[0]) { 
-		$('input').get(0).focus();
-	}
-	
+$(document).ready(function(){	
 
 	//CHECKBOX TO SWITCH
 	$.fn.bootstrapSwitch.defaults.onText = "Private";
@@ -41,19 +34,30 @@ $(document).ready(function(){
 		}catch(e){}
 	});
 
+
 	//ADD GALLERY
-	$('.add-gallery').on('click', function(event){
+	function makeNewGallery(element, event){
 		var gname = $('.new-gallery-name').val();
-		var icon = new Icon( $(this).find('.glyphicon') );
+		var icon = new Icon( $(element).find('.glyphicon') );
 		if(gname.length > 0){
 			icon.toggleLoad();
 			$('.new-gallery-name').prop('disabled', true);
 			$.post(ROOT + 'ajax-api.php', {action: 'addGallery', gname: gname}, function(data){
 				$('.display-gallerys').append(data);
 				icon.toggleLoad('glyphicon-ok');
+				$('.new-gallery-dropdown').dropdown('toggle');
 			});
 		}
+	}
+	$('.add-gallery').on('click', function(event){
+		makeNewGallery(this, event);
 	});
+	$('.new-gallery-name').on('keypress', function(event){
+		if(event.keyCode == 13){
+			makeNewGallery($('.add-gallery'), event);
+		}
+	});
+	
 
 	//HANDE FILE INPUT BUTTONS
 	$(document).on('change', '.btn-file :file', function() {
