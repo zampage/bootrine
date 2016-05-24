@@ -13,6 +13,7 @@
 				<input type="checkbox" class="gallery-private" <?php echo (Controller::getCurrentGallery($_GET['param'])->isPrivate()) ? "checked" : "" ; ?>>
 				<input type="hidden" class="gallery-gid" value="<?php echo Controller::getCurrentGallery($_GET['param'])->getGid(); ?>">
 				<input type="button" class="btn btn-primary save-gallery-edit" value="Speichern">
+				<input type="button" class="btn btn-danger delete-gallery" value="Löschen">
 				<hr>
 			</form>
 		</div>

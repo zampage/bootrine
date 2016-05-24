@@ -13,23 +13,28 @@ if(isset($_POST['action'])){
 
 	if($_POST['action'] == 'uploadImage'){
 
-		//TBD: UPDATE SECURITY
-		$image = $_FILES['images'];
-		for($i = 0; $i < count($image['name']); $i++){
-			$name = explode('.', $image['name'][$i]);
-			$path = uniqid().'-'.md5($image['name'][$i]).'.'.$name[count($name)-1];
-			file_put_contents('images/'.$path, file_get_contents($image['tmp_name'][$i]));
-			
-			$gallery = Manager::get()->getRepository('Gallery')->find($_POST['gid']);
-			
-			$img = new Image();
-			$img->setPath($path);
-			$img->setGallery($gallery);
+		$gallery = Manager::get()->getRepository('Gallery')->find($_POST['gid']);
+		$user = Manager::get()->getRepository('User')->find($_SESSION['user']['uid']);
 
-			Manager::get()->persist($img);
-			Manager::get()->flush($img);
+		//ONLY UPLOAD IF GALLERY IS OWNED BY SESSION USER
+		if($gallery->getUser() == $user){
 
-			echo $img->display();
+			//TBD: UPDATE SECURITY
+			$image = $_FILES['images'];
+			for($i = 0; $i < count($image['name']); $i++){
+				$name = explode('.', $image['name'][$i]);
+				$path = uniqid().'-'.md5($image['name'][$i]).'.'.$name[count($name)-1];
+				file_put_contents('images/'.$path, file_get_contents($image['tmp_name'][$i]));
+				
+				$img = new Image();
+				$img->setPath($path);
+				$img->setGallery($gallery);
+
+				Manager::get()->persist($img);
+				Manager::get()->flush();
+
+				echo $img->display();
+			}
 
 		}
 
@@ -42,11 +47,30 @@ if(isset($_POST['action'])){
 		$gid = intval($_POST['gid']);
 
 		$gallery = Manager::get()->getRepository('Gallery')->find($gid);
-		$gallery->setName($name);
-		$gallery->setPrivate($priv);
+		$user = Manager::get()->getRepository('User')->find($_SESSION['user']['uid']);
 
-		Manager::get()->persist($gallery);
-		Manager::get()->flush($gallery);
+		//ONLY UPLOAD IF GALLERY IS OWNED BY SESSION USER
+		if($gallery->getUser() == $user){
+			$gallery->setName($name);
+			$gallery->setPrivate($priv);
+
+			Manager::get()->persist($gallery);
+			Manager::get()->flush();
+
+		}
+
+	}
+
+	if($_POST['action'] == 'deleteGallery'){
+
+		$gid = intval($_POST['gid']);
+		$gallery = Manager::get()->getRepository('Gallery')->find($gid);
+		$user = Manager::get()->getRepository('User')->find($_SESSION['user']['uid']);
+
+		if($gallery->getUser() == $user){
+			Manager::get()->remove($gallery);
+			Manager::get()->flush();
+		}
 
 	}
 }

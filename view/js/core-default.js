@@ -109,10 +109,11 @@ $(document).ready(function(){
     });
 
     //GALLERY EDITING
+    //toggle edit
     $('.toggle-gallery-editing').on('click', function(event){
     	$('.gallery-editing-zone').slideToggle('fast');
     });
-    //SAVE GALLERY EDIT
+    //save
     $('.save-gallery-edit').on('click', function(event){
     	var name = $('.gallery-name').val();
     	var priv = ($('.gallery-private').prop('checked')) ? 1 : 0;
@@ -124,6 +125,19 @@ $(document).ready(function(){
     		$('.gallery-label-placeholder').html(lbl);
     		$('.gallery-editing-zone').slideToggle('fast');
     	});
+    });
+
+    //DELETE GALLERY
+    $('.delete-gallery').on('click', function(event){
+
+    	if(confirm("Möchten Sie diese Galerie wirklich löschen?")){
+	    	var gid = parseInt($('.gallery-gid').val());
+	    	$.post(ROOT+'ajax-api.php', {action:'deleteGallery', gid:gid}, function(data){
+	    		console.log(data);
+	    		window.location.href=ROOT+"home";
+	    	});
+	    }
+	    
     });
 
 });
