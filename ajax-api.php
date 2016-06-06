@@ -82,4 +82,21 @@ if(isset($_POST['action'])){
 		}
 
 	}
+
+	if($_POST['action'] == 'deleteImage'){
+
+		$iid = intval($_POST['iid']);
+		$image = Manager::get()->getRepository('Image')->find($iid);
+		$user = Manager::get()->getRepository('User')->find($_SESSION['user']['uid']);
+
+		if($image->getUser() == $user){
+			//Remove file physicaly from server
+			unlink(IMAGES_PATH.$image->getPath());
+			echo "unlinked file <br>";
+			Manager::get()->remove($image);
+			Manager::get()->flush();
+			echo "operation done";
+		}
+
+	}
 }

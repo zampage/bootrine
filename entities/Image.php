@@ -33,7 +33,8 @@ class Image
 		echo '<div class="col-md-3 col-sm-4 col-xs-12">';
 		echo '<div class="thumbnail">';
 		echo '<div class="image-holder gallerythumb" data-path="' . IMAGES_PATH . $this->getPath() . '">';
-		echo '<img src="' . IMAGES_PATH . $this->getPath() . '">';
+		echo '<img src="' . IMAGES_PATH . $this->getPath() . '" class="img-center" data-identifier="'.$this->getIid().'">';
+		echo '<span class="glyphicon glyphicon-remove deleteImage"></span>';
 		echo '</div>';
 		echo '</div>';
 		echo '</div>';

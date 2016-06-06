@@ -9,7 +9,6 @@ lightbox = function() {
 lightbox.prototype.init = function() {
 	$("body").append($('<div>', {class: "galleryHolder"}))
 
-	
 	that = this;
 
 	$(document).on("click", '.gallerythumb', function() {
@@ -42,4 +41,24 @@ lightbox.prototype.showImage = function(elem) {
 
 $(document).ready(function() {
 	l = new lightbox();
+
+
+	//Delete image function
+	$(".deleteImage").click(function() {
+		if(confirm("Wollen Sie dieses Bild wirklich löschen")) {
+			
+			//get image path
+			path = $(this).parent().data("path");
+			iid = $(this).data("identifier");
+			console.log("iid: " + iid);
+			
+			$.post("../ajax-api.php", {action: "deleteImage", path:path, iid:iid});
+
+		} else {
+			console.log("penis");
+		}
+	});
+
+
+
 });

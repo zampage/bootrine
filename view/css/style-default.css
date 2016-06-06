@@ -61,14 +61,6 @@ html,body{
     align-items: center;
     /* // */
 }
-.image-holder img{
-	max-height:100%;
-	opacity: .7;
-	transition:opacity .5s easy;
-}
-.image-holder img:hover{
-	opacity: 1;
-}
 
 .dropdown-add-gallery{
 	padding:5px 7px;
