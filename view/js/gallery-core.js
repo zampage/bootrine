@@ -17,15 +17,19 @@ lightbox.prototype.init = function() {
 
 	gwrap = $(".galleryHolder");
 	gwrap.on("click", function() {
-		gwrap.css("opacity", 0);
-		console.log(this);
+		that.hideImage(gwrap);
+		
+	})
+};
+
+lightbox.prototype.hideImage = function(gwrap) {
+	gwrap.css("opacity", 0);
 		setTimeout(function(){
 			gwrap.html("");
 			gwrap.css("display", "none");
 		}, 500);
-		
-	})
-};
+
+}
 
 lightbox.prototype.showImage = function(elem) {
 	path = $(elem).data("path");
@@ -40,7 +44,7 @@ lightbox.prototype.showImage = function(elem) {
 };
 
 $(document).ready(function() {
-	l = new lightbox();
+	lightbox = new lightbox();
 
 
 	//Delete image function
@@ -48,11 +52,18 @@ $(document).ready(function() {
 		if(confirm("Wollen Sie dieses Bild wirklich löschen")) {
 			
 			//get image path
-			path = $(this).parent().data("path");
-			iid = $(this).data("identifier");
-			console.log("iid: " + iid);
+			wrapper = $(this).parent();
+			path = wrapper.data("path");
+			iid = wrapper.find("img").data("identifier");
 			
-			$.post("../ajax-api.php", {action: "deleteImage", path:path, iid:iid});
+			$.post( "../ajax-api.php", { action: "deleteImage", path:path, iid:iid })
+			.done(function( data ) {
+				console.log( "Image deleted: " + data );
+
+				wrapper.parent().hide();
+				lightbox.hideImage($(".galleryHolder"));
+
+			});
 
 		} else {
 			console.log("penis");

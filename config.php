@@ -40,7 +40,8 @@ define("DB_USER", 			"root");
 define("DB_PASSWORD", 		"");
 define("DB_SCHEMA", 		"bootrine");
 //PATHS
-define("ROOT",				"/bootrine/");
+define("ROOT_BASE", "C:\\xampp\htdocs\\");
+define("ROOT",				"/github/bootrine/");
 define("ENTITY_PATH", 		"entities");
 define("IMAGES_PATH",		ROOT . "images/");
 
