@@ -72,7 +72,7 @@ if(isset($_POST['action'])){
 			//PHYSICALLY REMOVE ALL IMAGES!!!
 			//TBD: does not work yet... path problem a la hirschi
 			foreach($gallery->getImages() AS $image){
-				unlink(IMAGES_PATH.$image->getPath());
+				unlink(ROOT_BASE.IMAGES_PATH.$image->getPath());
 				//echo IMAGES_PATH.$image->getPath();
 				//echo '<br>';
 			}
@@ -84,19 +84,29 @@ if(isset($_POST['action'])){
 	}
 
 	if($_POST['action'] == 'deleteImage'){
-
 		$iid = intval($_POST['iid']);
+		$path = $_POST['path'];
+		$checkPath = explode("/", $path);
+		$checkPath = $checkPath[count($checkPath)-1];
+
 		$image = Manager::get()->getRepository('Image')->find($iid);
 		$user = Manager::get()->getRepository('User')->find($_SESSION['user']['uid']);
 
-		if($image->getUser() == $user){
-			//Remove file physicaly from server
-			unlink(IMAGES_PATH.$image->getPath());
-			echo "unlinked file <br>";
-			Manager::get()->remove($image);
-			Manager::get()->flush();
-			echo "operation done";
-		}
+		if($image->getGallery()->getUser() == $user){
 
+			//check if path is unchanged
+			if($image->getPath() == $checkPath) {
+				//Remove file physicaly from server
+				unlink(ROOT_BASE.IMAGES_PATH.$image->getPath());
+
+				//Remove link from database
+				Manager::get()->remove($image);
+				Manager::get()->flush();
+
+			} else {
+				echo "An error Occured";
+			}
+			
+		}
 	}
 }
